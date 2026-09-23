@@ -1,0 +1,25 @@
+Industrial Anomaly Pattern Discovery - MVTec Pill Prototype
+================================================================================
+Number of normal images: 26
+Number of anomalous images: 141
+Original defect categories: ['crack', 'color', 'scratch', 'contamination', 'faulty_imprint', 'combined', 'pill_type']
+Embedding model: MobileNetV2 (ImageNet pretraining, final classification layer removed)
+Embedding dimensionality: 1280
+Clustering algorithms tested: K-Means, DBSCAN
+K values tested: [2, 3, 4, 5, 6, 7, 8]
+Silhouette/Davies-Bouldin summary: [{'k': 2, 'silhouette': 0.45746952295303345, 'davies_bouldin': 0.8894474701696978}, {'k': 3, 'silhouette': 0.32154539227485657, 'davies_bouldin': 1.119806684915423}, {'k': 4, 'silhouette': 0.08221860229969025, 'davies_bouldin': 2.233347927120917}, {'k': 5, 'silhouette': 0.06497771292924881, 'davies_bouldin': 2.720995610639422}, {'k': 6, 'silhouette': 0.05330953374505043, 'davies_bouldin': 2.8552258253789518}, {'k': 7, 'silhouette': 0.04835671931505203, 'davies_bouldin': 2.7273847943691756}, {'k': 8, 'silhouette': 0.04638875275850296, 'davies_bouldin': 2.820963640888098}]
+Final candidate clustering: K-Means with k=2
+Cluster sizes: {np.int32(0): np.int64(4), np.int32(1): np.int64(137)}
+ARI vs original labels: 0.0151
+NMI vs original labels: 0.0838
+
+Contingency table (cluster x original defect label):
+defect_label  color  combined  contamination  crack  faulty_imprint  pill_type  scratch
+cluster                                                                                
+0                 0         0              0      0               0          4        0
+1                25        17             21     26              19          5       24
+
+Is the Core Idea Valid?
+----------------------------------------
+Likely verdict: Inconclusive — needs further testing
+The clustering is only considered meaningful if the representative images inside each cluster look visually coherent and distinct from other clusters. A high label agreement score alone is not enough to claim the unsupervised clusters are semantically meaningful.

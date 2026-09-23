@@ -1,0 +1,39 @@
+Industrial Anomaly Pattern Discovery - Defect Region Experiment
+==========================================================================================
+Number of normal images: 0
+Number of anomalous images: 141
+Original defect categories: ['crack', 'color', 'scratch', 'contamination', 'faulty_imprint', 'combined', 'pill_type']
+Embedding model: MobileNetV2 (ImageNet pretraining, final classification layer removed)
+Embedding dimensionality: 1280
+Padding ratio: 0.15
+Successfully processed defect-region images: 141
+Skipped defect-region images: 0
+K values tested: [2, 3, 4, 5, 6, 7, 8]
+K-Means metrics: [{'k': 2, 'silhouette': 0.14929305016994476, 'davies_bouldin': 2.449477589811095}, {'k': 3, 'silhouette': 0.1229424700140953, 'davies_bouldin': 2.265813440491959}, {'k': 4, 'silhouette': 0.1233411580324173, 'davies_bouldin': 2.509499808441224}, {'k': 5, 'silhouette': 0.06942087411880493, 'davies_bouldin': 2.546846623329537}, {'k': 6, 'silhouette': 0.07463107258081436, 'davies_bouldin': 2.4851039288452794}, {'k': 7, 'silhouette': 0.09806465357542038, 'davies_bouldin': 2.240695456576038}, {'k': 8, 'silhouette': 0.11268647760152817, 'davies_bouldin': 1.991466423532229}]
+Best candidate K: 2 (silhouette=0.1493, DB=2.4495)
+ARI vs original labels: 0.0936
+NMI vs original labels: 0.2091
+
+Contingency table (cluster x original defect label):
+defect_label  color  combined  contamination  crack  faulty_imprint  pill_type  scratch
+cluster                                                                                
+0                23         3             21     24              16          0       16
+1                 2        14              0      2               3          9        8
+
+WHOLE IMAGE VS DEFECT REGION
+------------------------------------------------------------------------------------------
+   Experiment  Best K  Silhouette  Davies-Bouldin      ARI      NMI
+  Whole Image       2    0.457470        0.889447 0.015126 0.083782
+Defect Region       2    0.149293        2.449478 0.093575 0.209109
+
+1. Did defect-region embeddings improve cluster separation? False
+2. Did the clusters become more balanced? False
+3. Did ARI/NMI increase? True
+4. Did the discovered clusters become less dominated by one existing defect category? False
+5. Are there signs that the original whole-image embeddings captured irrelevant pill appearance or background? Review the representative defect-region crops and cluster assignments.
+6. Are the discovered patterns actually worth pursuing? Only if the representative defect-region crops are visually coherent and distinct across clusters.
+
+Methodological limitation:
+The ground-truth MVTec masks are used only as an offline diagnostic experiment to determine whether focusing on the anomaly region produces more meaningful visual representations. These masks are not available for a genuinely new uploaded image in the final application. If the defect-region experiment proves promising, the eventual application would need an actual anomaly-localization or defect-detection method before clustering.
+
+Final verdict: Inconclusive — needs further testing

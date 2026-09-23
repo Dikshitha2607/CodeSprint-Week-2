@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+cache/
+pill/
+pill.tar.xz
+outputs/pill_anomaly_experiment/cluster_representatives/
+outputs/pill_anomaly_experiment/defect_region_experiment/cluster_representatives/
