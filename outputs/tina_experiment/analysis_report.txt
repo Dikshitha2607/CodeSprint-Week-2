@@ -1,0 +1,39 @@
+Industrial Anomaly Pattern Discovery with TiNA
+===========================================
+
+Dataset
+-------
+Days used: 2017-09-06, 2017-09-07, 2017-09-08, 2017-09-09, 2017-09-10, 2017-09-11, 2017-09-12
+Total observations: 592426
+Sensor count: 105
+Time range: 2017-09-06 03:26:00 to 2017-09-12 23:44:00
+
+Windowing
+---------
+Window size: 5min
+Stride: 1min
+Valid windows: 9869
+
+Anomaly Detection
+------------------
+Isolation Forest parameters: n_estimators=200, contamination=0.05, random_state=42
+Anomalous windows: 494 out of 9869
+Anomalous percentage: 5.01%
+
+Clustering
+----------
+PCA dimensionality: 631
+K values tested: 2, 3, 4, 5
+Silhouette scores: k=2:0.6918, k=3:0.7118, k=4:0.6837, k=5:0.6540
+Davies-Bouldin scores: k=2:0.4922, k=3:0.5664, k=4:0.6021, k=5:0.7637
+Selected exploratory cluster configuration: k=3
+
+Pattern analysis
+----------------
+Cluster 0: occurrences=75, dates=['2017-09-08', '2017-09-09', '2017-09-10', '2017-09-11', '2017-09-12'], avg_anomaly_score=0.529, avg_window_duration_min=5.00, alarm_association=20.0%, alarm_types=['A128', 'A95', 'A96', 'A97'], most_common_alarm=A128, no_alarm_windows=60
+Cluster 1: occurrences=252, dates=['2017-09-06', '2017-09-08', '2017-09-09', '2017-09-10', '2017-09-11', '2017-09-12'], avg_anomaly_score=0.557, avg_window_duration_min=5.00, alarm_association=14.3%, alarm_types=['A128', 'A5', 'A6', 'A95', 'A96', 'A97'], most_common_alarm=A5, no_alarm_windows=216
+Cluster 2: occurrences=167, dates=['2017-09-06', '2017-09-08', '2017-09-09', '2017-09-10', '2017-09-11', '2017-09-12'], avg_anomaly_score=0.542, avg_window_duration_min=5.00, alarm_association=45.5%, alarm_types=['A128', 'A5', 'A6', 'A95', 'A96', 'A97'], most_common_alarm=A6, no_alarm_windows=91
+
+Final feasibility assessment
+----------------------------
+This is an exploratory feasibility test. The pipeline is technically valid, but the clustering result should be interpreted as evidence for recurring structure only if the metrics are stable and the alarm associations differ meaningfully across clusters. If the metrics are weak, unstable, or difficult to interpret, the correct conclusion is to revisit the windowing and feature design before claiming pattern discovery.

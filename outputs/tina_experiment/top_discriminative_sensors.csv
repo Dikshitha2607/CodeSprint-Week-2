@@ -1,0 +1,9 @@
+sensor,number_of_top_features,important_statistics,cluster_behavior_summary
+FEATURE43,4,"max, mean, range, std","cl1: 0.032, cl0: 0.710, cl2: 1.873"
+FEATURE68,4,"max, min, range, std","cl2: -2.291, cl0: -2.014, cl1: 0.047"
+FEATURE69,3,"min, range, std","cl2: -2.267, cl0: -1.984, cl1: 0.056"
+FEATURE70,3,"max, min, range","cl2: -11.035, cl0: -10.177, cl1: -0.048"
+FEATURE47,2,"max, range","cl1: -0.091, cl0: 3.785, cl2: 12.224"
+FEATURE71,2,"max, mean","cl1: -0.824, cl0: 0.799, cl2: 0.986"
+FEATURE51,1,min,"cl2: -3.728, cl0: -1.629, cl1: 0.091"
+FEATURE52,1,max,"cl1: -0.360, cl0: 0.837, cl2: 1.915"

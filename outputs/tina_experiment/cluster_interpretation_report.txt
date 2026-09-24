@@ -1,0 +1,46 @@
+Industrial Anomaly Pattern Discovery: Cluster Interpretation Report
+===============================================================
+
+1. Objective
+The goal is to test whether multivariate sensor behavior in anomalous windows forms recurring groups without using alarms or maintenance codes as model inputs.
+
+2. Dataset and windowing
+Days analyzed: 2017-09-06, 2017-09-07, 2017-09-08, 2017-09-09, 2017-09-10, 2017-09-11, 2017-09-12
+Total rows: 592426
+Window size: 5 minutes; stride: 1 minute; valid windows: 9869; anomalous windows: 494.
+
+3. Anomaly detection results
+Isolation Forest was fit on window-level sensor features only, with contamination fixed at 0.05 for this feasibility experiment.
+The anomalous windows were selected after scaling the 630 window statistics.
+
+4. PCA results
+PCA on the anomalous windows reduced the 630-dimensional feature space to 13 components to explain 90.83% of the variance.
+
+5. Clustering results
+K-Means was applied on the 2D PCA representation for k = 2, 3, 4, 5. The highest silhouette score was observed for k = 3, which was selected as an exploratory cluster configuration.
+
+6. Cluster stability
+Mean pairwise ARI across seeds 42, 7, 21, 100, 123: 1.0000
+Broad 3-cluster structure preserved: True
+The interpretation remains cautious because stability is an empirical check, not proof of a real failure mode.
+
+7. Top discriminative sensor features
+FEATURE70_min; FEATURE70_range; FEATURE70_max; FEATURE68_min; FEATURE69_min
+
+8. Alarm association
+Chi-square statistic: 52.7764; p-value: 3.46538e-12
+alarm_associated  False  True 
+cluster                       
+0                    60     15
+1                   216     36
+2                    91     76
+The alarm association pattern differs across the learned behavioral clusters, but this does not imply causality.
+
+9. Limitations
+The clusters are behavioral groupings rather than verified physical failure states. The data are anonymized and the sensor identities remain generic. The windowing design can affect the grouping outcome.
+
+10. Feasibility assessment
+Assessment: Promising
+
+11. Recommended next step
+Repeat the analysis with a second window length/stride and validate whether similar cluster structure recurs before investing further in the full application prototype.

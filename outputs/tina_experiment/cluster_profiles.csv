@@ -1,0 +1,4 @@
+cluster_id,number_of_windows,percentage_of_anomalous_windows,dates_observed,average_anomaly_score,alarm_association_pct,most_common_alarm,top_distinguishing_features
+0,75,15.182186234817813,"['2017-09-08', '2017-09-09', '2017-09-10', '2017-09-11', '2017-09-12']",0.5285395055384221,20.0,A128,"['FEATURE70_min', 'FEATURE70_range', 'FEATURE70_max', 'FEATURE68_min', 'FEATURE69_min']"
+1,252,51.012145748987855,"['2017-09-06', '2017-09-08', '2017-09-09', '2017-09-10', '2017-09-11', '2017-09-12']",0.557446403311927,14.285714285714285,A5,"['FEATURE70_min', 'FEATURE70_range', 'FEATURE70_max', 'FEATURE68_min', 'FEATURE69_min']"
+2,167,33.80566801619433,"['2017-09-06', '2017-09-08', '2017-09-09', '2017-09-10', '2017-09-11', '2017-09-12']",0.5422123093474458,45.50898203592814,A6,"['FEATURE70_min', 'FEATURE70_range', 'FEATURE70_max', 'FEATURE68_min', 'FEATURE69_min']"
